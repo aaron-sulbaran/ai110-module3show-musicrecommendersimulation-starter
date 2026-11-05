@@ -90,7 +90,7 @@ def run_experiment(songs: List[Dict], k: int) -> None:
         rows = [[rank, song["title"], f"{song['genre']} / {song['mood']}", f"{score:.2f}"]
                 for rank, (song, score, _) in enumerate(recommendations, start=1)]
         print(label)
-        print(tabulate(rows, headers=["#", "Title", "Genre / Mood", "Score"], tablefmt="simple"))
+        print(tabulate(rows, headers=["#", "Title", "Genre / Mood", "Score"], tablefmt="simple", disable_numparse=True))
         print()
 
 
