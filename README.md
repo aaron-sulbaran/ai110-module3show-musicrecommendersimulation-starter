@@ -436,7 +436,7 @@ Read and complete `model_card.md`:
 
 [**Model Card**](model_card.md)
 
-<!-- TODO (Aaron): write 1 to 2 paragraphs in your own words:
-  - what you learned about how recommenders turn data into predictions
-  - where bias or unfairness could show up in systems like this
--->
+Building this showed me that a recommender turns data into predictions by doing something much simpler than I expected: it scores every item against a profile and sorts. Almost everything interesting lives in the weights. When I doubled energy and halved genre, Gym Hero and a sad pop ballad dropped out of the happy-pop top 5. When I removed the mood check, results got worse. Same tool, opposite outcomes, depending on which signal I touched. So the "prediction" is really a set of choices I made by hand about what matters, and the output only looks objective because it comes with a score.
+
+Bias shows up in those choices and in the data. Genre was worth more than mood and energy combined, so a mediocre song in the right genre beat a better-feeling song one genre over. Exact string matching meant `pop` got no credit for `indie pop` or `k-pop`, which quietly punishes anyone whose taste lives in the in-between labels. The catalog leans English and recent (17 of 30 songs are English and 19 of 30 are from the 2010s or 2020s), so someone who loves older or non-English music gets fewer real matches. And the conflicting profile (high energy but sad) got a quiet ballad first with a perfectly accurate explanation, which is the part that worries me most: a system can be wrong for you and still look completely reasonable. At real scale this would also become a filter bubble, since nothing outside your stated genre and mood gets shown unless the weights change. The full breakdown is in the model card.
+

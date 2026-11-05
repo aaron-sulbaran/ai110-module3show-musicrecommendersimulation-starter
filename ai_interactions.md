@@ -29,7 +29,7 @@ The agent turned that into a plan: read the spec, clone the fork, inspect the st
 - Checked that unset optional preferences are skipped, so the original pop/happy profile still scores exactly 3.98 for Sunrise City.
 - Caught and fixed three problems the agent's first draft had: `main.py` imported `from recommender import ...`, which fails under `python -m src.main`; `pytest` could not import `src` until a `pytest.ini` with `pythonpath = .` was added; and `tabulate` was turning `2.00` into `2` in the score column until `disable_numparse=True` was set.
 - Dataset values were written by hand to be plausible, not measured, which is called out in the model card.
-- TODO (Aaron): add your own notes here after you play with the CLI.
+- My own note: the summary of the first draft looked fine every time, and it was only running it (`python -m src.main`, then `pytest`) that exposed the import, path, and formatting problems. I would rather run the thing early than trust a clean-sounding description of it.
 
 ---
 
